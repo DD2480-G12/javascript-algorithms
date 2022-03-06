@@ -37,7 +37,7 @@ export default class Rope {
    * @return {Rope}
    */
   insert(i, otherNode) {
-    [n1, n2] = this.split(i);
+    const [n1, n2] = this.split(i);
     return n1.concat(otherNode).concat(n2);
   }
 
@@ -79,7 +79,7 @@ export default class Rope {
       if (i == 0) {
         nodes[0] = null;
         nodes[1] = this;
-      } else if (i = this.weight) {
+      } else if (i == this.weight) {
         nodes[0] = this;
         nodes[1] = null;
       } else {
@@ -88,11 +88,11 @@ export default class Rope {
       }
       return nodes;
     }
-    else if (i = this.weight) {
-      return [new Rope(this.left), new Rope(this.right)];
+    else if (i == this.weight) {
+      return [this.left, this.right];
     } else if (i < this.weight) {
-      let pair = this.split(i);
-      return [new Rope(pair[0]), this.right.concat(pair[1])];
+      let pair = this.left.split(i);
+      return [pair[0], pair[1].concat(this.right)];
     } else {
       let pair = this.right.split(i - this.weight);
       return [this.left.concat(pair[0]), pair[1]];

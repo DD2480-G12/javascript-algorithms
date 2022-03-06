@@ -69,4 +69,15 @@ describe('Rope', () => {
     let rope = getBasicRope();
     expect(rope.report(1, 2)).toBe("bcd");
   });
+
+  it('should split the nodes', () => {
+    let rope = getBasicRope();
+    let splitRope = rope.split(2);
+    let left = splitRope[0];
+    let right = splitRope[1]
+    expect(left.str).toBe("ab");
+    expect(right.left.str).toBe("cd");
+    expect(right.right.str).toBe("ef");
+  });
+
 });
