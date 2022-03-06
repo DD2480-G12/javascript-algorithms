@@ -17,20 +17,20 @@ function getBasicRope() {
 
 function compareBasicRope(rope) {
   if (rope.left === null || rope.right === null ||
-      rope.left.left === null || rope.left.right === null) {
+    rope.left.left === null || rope.left.right === null) {
     return false;
   }
-    
+
   return rope.weight === 4 && rope.left.weight === 2 &&
-         rope.left.left.str === "ab" &&
-         rope.left.right.str === "cd" &&
-         rope.right.str === "ef";
+    rope.left.left.str === "ab" &&
+    rope.left.right.str === "cd" &&
+    rope.right.str === "ef";
 }
 
 describe('Rope', () => {
   it('should calculate the length correctly', () => {
     let rope = getBasicRope();
-    
+
     expect(rope.length()).toBe(6);
   });
 
@@ -63,5 +63,10 @@ describe('Rope', () => {
     let node2 = node1.concat(leaf3);
 
     expect(compareBasicRope(node2)).toBe(true);
+  });
+
+  it('should report the nodes', () => {
+    let rope = getBasicRope();
+    expect(rope.report(1, 2)).toBe("bcd");
   });
 });
