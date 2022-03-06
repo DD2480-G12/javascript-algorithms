@@ -80,4 +80,12 @@ describe('Rope', () => {
     expect(right.right.str).toBe("ef");
   });
 
+  it('should delete the nodes', () => {
+    let rope = getBasicRope();
+    let deleted = rope.delete(1, 2);
+    expect(deleted.left.str).toBe("a");
+    expect(deleted.right.left.str).toBe("d");
+    expect(deleted.right.right.str).toBe("ef");
+  });
+
 });
