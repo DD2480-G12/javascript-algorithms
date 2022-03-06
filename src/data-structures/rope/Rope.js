@@ -1,5 +1,3 @@
-import RopeNode from './RopeNode';
-
 export default class Rope {
   constructor(str) {
     this.str = str;
